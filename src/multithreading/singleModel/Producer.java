@@ -1,7 +1,6 @@
-package multithreading.basic_consumer_producer;
+package multithreading.singleModel;
 
 import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 class Producer implements Runnable {

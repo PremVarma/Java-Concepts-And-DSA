@@ -1,8 +1,15 @@
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-
+        BigDecimal bigDecimal = new BigDecimal(100);
+        System.out.println(bigDecimal.toString());
+        MyClass myClass =  new MyClass();
+        myClass.setLine1(bigDecimal.toString());
+        System.out.println("Hello");
     }
 
     public static Node flattern(Node head) {
@@ -26,6 +33,18 @@ public class Main {
             curr = curr.next;
         }
         return head;
+    }
+}
+
+class MyClass{
+    private String line1;
+
+    public String getLine1() {
+        return line1;
+    }
+
+    public void setLine1(String line1) {
+        this.line1 = line1;
     }
 }
 

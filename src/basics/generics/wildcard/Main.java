@@ -1,5 +1,6 @@
 package basics.generics.wildcard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Animal {
@@ -38,6 +39,14 @@ public class Main {
         if (animal != null) {
             animal.makeSound();
         }
+        List<Bus> buses =  new ArrayList<>();
+        buses.add(new Bus());
+
+        Print print =  new Print();
+        print.setPrintValues(buses);
+        //print.setPrintValuesWithoutWildcard(buses);  // only vehicle is alowed as vehicle can also have bus car or any other vehicles
     }
 }
+
+class Bus extends Vehicle{}
 

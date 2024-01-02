@@ -46,7 +46,7 @@ public class FlatternLinkedList {
         System.out.println("The original list is :");
         printOriginalList(head);
 
-        FlatternNode newhead = flattenList_UsingBottomPointer(head);
+        FlatternNode newhead = flattenList_BF(head);
         System.out.println("\n\nThe flattened list is BF :");
         printFlattenedDownList(newhead);
 

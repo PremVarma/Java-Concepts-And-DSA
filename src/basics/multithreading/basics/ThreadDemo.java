@@ -22,7 +22,7 @@ public class ThreadDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-//TODO: ===========================      Ways of creating threads =======================
+// TODO: ===========================      Ways of creating threads =======================
 
 //      Using Class which extends Thread
         MyThread myThread = new MyThread();

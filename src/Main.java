@@ -7,9 +7,39 @@ public class Main {
     public static void main(String[] args) {
         BigDecimal bigDecimal = new BigDecimal(100);
         System.out.println(bigDecimal.toString());
-        MyClass myClass =  new MyClass();
+        MyClass myClass = new MyClass();
         myClass.setLine1(bigDecimal.toString());
         System.out.println("Hello");
+        System.out.println(atoi("123P"));
+    }
+
+    private static int atoi(String s) {
+        if (s == null || s.isEmpty()) return 0;
+        s = s.trim();
+        char firstChar = s.charAt(0);
+        if (!isValidFirstChar(firstChar)) {
+            return 0;
+        }
+        boolean isNegative = (firstChar == '-');
+        int result = 0;
+        int i = (firstChar == '+' || firstChar == '-') ? 1 : 0;
+        while (i < s.length() && Character.isDigit(s.charAt(i))) {
+            int digit = Character.getNumericValue(s.charAt(i));
+            if (isOverflow(result, digit)) {
+                return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+            result = result * 10 + digit;
+            i++;
+        }
+        return result;
+    }
+
+    private static boolean isOverflow(int result, int digit) {
+        return result > (Integer.MIN_VALUE - digit) / 10;
+    }
+
+    private static boolean isValidFirstChar(char firstChar) {
+        return (firstChar == '+' || firstChar == '-' || Character.isDigit(firstChar));
     }
 
     public static Node flattern(Node head) {
@@ -36,7 +66,7 @@ public class Main {
     }
 }
 
-class MyClass{
+class MyClass {
     private String line1;
 
     public String getLine1() {

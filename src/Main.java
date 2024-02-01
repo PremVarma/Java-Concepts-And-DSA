@@ -5,13 +5,32 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        BigDecimal bigDecimal = new BigDecimal(100);
-        System.out.println(bigDecimal.toString());
-        MyClass myClass = new MyClass();
-        myClass.setLine1(bigDecimal.toString());
-        System.out.println("Hello");
-        System.out.println(atoi("123P"));
+//        BigDecimal bigDecimal = new BigDecimal(100);
+//        System.out.println(bigDecimal.toString());
+//        MyClass myClass = new MyClass();
+//        myClass.setLine1(bigDecimal.toString());
+//        System.out.println("Hello");
+//        System.out.println(atoi("123P"));
+
+        int a = 1;
+        int b = 2;
+        switch (a + b) {
+            case 1:
+                System.out.println("1");
+                break;
+            case 2:
+                System.out.println("2");
+                break;
+            case 3:
+                System.out.println("3");
+            case 4:
+                System.out.println("4");
+            default:
+                System.out.println("default");
+        }
     }
+
+
 
     private static int atoi(String s) {
         if (s == null || s.isEmpty()) return 0;
@@ -20,8 +39,8 @@ public class Main {
         if (!isValidFirstChar(firstChar)) {
             return 0;
         }
-        boolean isNegative = (firstChar == '-');
         int result = 0;
+        boolean isNegative = (firstChar == '-');
         int i = (firstChar == '+' || firstChar == '-') ? 1 : 0;
         while (i < s.length() && Character.isDigit(s.charAt(i))) {
             int digit = Character.getNumericValue(s.charAt(i));

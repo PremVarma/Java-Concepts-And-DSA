@@ -2,8 +2,8 @@ package ds.BinarySearch.easy;
 
 public class FindInSortedAndRotateArrayII {
     public static void main(String[] args) {
-        int[] arr = {7, 8, 9, 1, 2, 3, 4, 5, 7};
-        System.out.println(findElement(arr, 10));
+        int[] arr = {7, 7, 7, 1, 2, 3, 4, 5, 7};
+        System.out.println(findElement(arr, 1));
     }
 
     private static String findElement(int[] arr, int x) {

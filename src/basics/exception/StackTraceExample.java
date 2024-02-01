@@ -20,13 +20,13 @@ public class StackTraceExample {
     }
 
     public static void method3() throws CustomEx {
-        throw new CustomEx();
+        throw new CustomEx("This is custom exception");
     }
 }
 
 class CustomEx extends Exception{
 
-    public CustomEx() {
-
+    public CustomEx(String thisIsCustomException) {
+        super(thisIsCustomException);
     }
 }

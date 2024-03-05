@@ -6,7 +6,7 @@ import java.util.concurrent.*;
 
 public class ExecutorDemo {
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
         executorService.execute(newRunnable("Task1"));
         executorService.execute(newRunnable("Task2"));
         executorService.execute(newRunnable("Task3"));
@@ -70,5 +70,9 @@ public class ExecutorDemo {
                 System.out.println(Thread.currentThread().getName() + " : " + task);
             }
         };
+    }
+
+    private static Runnable newRunnableWithLambda(String task) {
+        return () -> System.out.println(Thread.currentThread().getName() + " : " + task);
     }
 }

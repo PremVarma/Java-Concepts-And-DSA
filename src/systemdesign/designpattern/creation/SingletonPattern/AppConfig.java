@@ -1,4 +1,4 @@
-package systemdesign.designpattern.creation.singleton;
+package systemdesign.designpattern.creation.SingletonPattern;
 
 public class AppConfig {
     private String dbConnectionString = "mongodb://localhost/mydb";

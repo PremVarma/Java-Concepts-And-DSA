@@ -1,4 +1,4 @@
-package systemdesign.designpattern.creation.singleton;
+package systemdesign.designpattern.creation.SingletonPattern;
 
 public class Main {
     public static void main(String[] args) {

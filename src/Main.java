@@ -1,110 +1,72 @@
+import com.sun.source.tree.Tree;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-//        BigDecimal bigDecimal = new BigDecimal(100);
-//        System.out.println(bigDecimal.toString());
-//        MyClass myClass = new MyClass();
-//        myClass.setLine1(bigDecimal.toString());
-//        System.out.println("Hello");
-//        System.out.println(atoi("123P"));
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
 
-        int a = 1;
-        int b = 2;
-        switch (a + b) {
-            case 1:
-                System.out.println("1");
-                break;
-            case 2:
-                System.out.println("2");
-                break;
-            case 3:
-                System.out.println("3");
-            case 4:
-                System.out.println("4");
-            default:
-                System.out.println("default");
-        }
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
+
+        levelOrder2(root);
     }
 
-
-
-    private static int atoi(String s) {
-        if (s == null || s.isEmpty()) return 0;
-        s = s.trim();
-        char firstChar = s.charAt(0);
-        if (!isValidFirstChar(firstChar)) {
-            return 0;
-        }
-        int result = 0;
-        boolean isNegative = (firstChar == '-');
-        int i = (firstChar == '+' || firstChar == '-') ? 1 : 0;
-        while (i < s.length() && Character.isDigit(s.charAt(i))) {
-            int digit = Character.getNumericValue(s.charAt(i));
-            if (isOverflow(result, digit)) {
-                return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+    private static void levelOrder(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        Deque<TreeNode> deque =  new ArrayDeque<>();
+        deque.add(root);
+        while (!deque.isEmpty()) {
+            TreeNode node = deque.poll();
+            if(node.left != null) {
+                deque.offer(node.left);
             }
-            result = result * 10 + digit;
-            i++;
+            if(node.right != null) {
+                deque.offer(node.right);
+            }
+            list.add(node.data);
         }
-        return result;
+        System.out.println(list);
     }
 
-    private static boolean isOverflow(int result, int digit) {
-        return result > (Integer.MIN_VALUE - digit) / 10;
-    }
-
-    private static boolean isValidFirstChar(char firstChar) {
-        return (firstChar == '+' || firstChar == '-' || Character.isDigit(firstChar));
-    }
-
-    public static Node flattern(Node head) {
-        if (head == null) {
-            return null;
-        }
-        Node tmp = head;
-        while (tmp != null) {
-            tmp = tmp.next;
-        }
-        Node curr = head;
-        while (curr != tmp) {
-            if (curr.child != null) {
-                tmp.next = curr.child;
-                Node temp = curr.child;
-                while (temp.next != null) {
-                    temp = temp.next;
+    private static void levelOrder2(TreeNode root) {
+        List<List<Integer>> list = new LinkedList<>();
+        Deque<TreeNode> deque =  new LinkedList<>();
+        deque.offer(root);
+        while (!deque.isEmpty()) {
+            int level =  deque.size();
+            List<Integer> subList =  new LinkedList<>();
+            for (int i = 0; i < level; i++) {
+                TreeNode node = deque.poll();
+                if(node.left != null) {
+                    deque.offer(node.left);
                 }
-                tmp = temp;
+                if(node.right != null) {
+                    deque.offer(node.right);
+                }
+                subList.add(node.data);
             }
-            curr = curr.next;
+            list.add(subList);
         }
-        return head;
+        System.out.println(list);
     }
 }
 
-class MyClass {
-    private String line1;
-
-    public String getLine1() {
-        return line1;
-    }
-
-    public void setLine1(String line1) {
-        this.line1 = line1;
-    }
-}
-
-class Node {
+class TreeNode {
     int data;
-    Node next;
-    Node child;
+    TreeNode left;
+    TreeNode right;
 
-    public Node(int data) {
+    public TreeNode(int data) {
         this.data = data;
-        this.next = null;
-        this.child = null;
+        this.left = null;
+        this.right = null;
     }
 }

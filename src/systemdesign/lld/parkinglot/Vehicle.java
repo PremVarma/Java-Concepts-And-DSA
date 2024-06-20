@@ -1,12 +1,14 @@
 package systemdesign.lld.parkinglot;
 
 public class Vehicle {
-    private String licensePlate;
-    private VehicleType type;
+    private final String licensePlate;
+    private final VehicleType type;
+    private VehicleSubType subType;
 
-    public Vehicle(String licensePlate, VehicleType type) {
+    public Vehicle(String licensePlate, VehicleType type, VehicleSubType vehicleSubType) {
         this.licensePlate = licensePlate;
         this.type = type;
+        this.subType = vehicleSubType;
     }
 
     public String getLicensePlate() {
@@ -15,5 +17,9 @@ public class Vehicle {
 
     public VehicleType getType() {
         return type;
+    }
+
+    public VehicleSubType getSubType() {
+        return subType;
     }
 }

@@ -1,5 +1,5 @@
 package systemdesign.lld.parkinglot;
 
-enum VehicleType {
-    CAR, BIKE, TRUCK
+public enum VehicleType {
+    TWO_WHEELER, FOUR_WHEELER
 }

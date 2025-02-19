@@ -1,5 +1,7 @@
 package basics.generics;
 
+import java.util.Objects;
+
 public class Pair<T, U> {
     private final T first;
     private final U second;
@@ -24,8 +26,8 @@ public class Pair<T, U> {
 
         Pair<?, ?> pair = (Pair<?, ?>) obj;
 
-        if (first != null ? !first.equals(pair.first) : pair.first != null) return false;
-        return second != null ? second.equals(pair.second) : pair.second == null;
+        if (!Objects.equals(first, pair.first)) return false;
+        return Objects.equals(second, pair.second);
     }
 
     @Override

@@ -8,13 +8,21 @@ public class Main {
 //       ===============================FIXED-THREAD-POOL================================================
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         executorService.submit(() -> System.out.println("Task 1"));
+        executorService.submit(()-> {
+            try {
+                Thread.sleep(2000);
+                System.out.println("Hurray!");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
         executorService.submit(() -> System.out.println("Task 2"));
 
         // Shutdown the executor when done
         executorService.shutdown();
 
 //       ===============================CACHE-THREAD-POOL================================================
-        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool(); // Create a thread if required ( Dynamically adjust pool size )
         cachedThreadPool.submit(() -> System.out.println("Task 1"));
         cachedThreadPool.submit(() -> System.out.println("Task 2"));
         cachedThreadPool.shutdown();

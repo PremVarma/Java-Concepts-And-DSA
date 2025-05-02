@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
 public class ScheduleExecutorExample {
     public static void main(String[] args) {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
-        scheduledExecutorService.schedule(() -> System.out.println("Hello"), 2, TimeUnit.SECONDS); // Runnable
+        scheduledExecutorService.schedule(() -> System.out.println("Hello"), 2, TimeUnit.SECONDS); // Run after 5 second delay ->   Runnable
         Future<String> future = scheduledExecutorService.schedule(() -> "Prem", 3, TimeUnit.SECONDS); // Callable
-        Future<?> future1 = scheduledExecutorService.scheduleAtFixedRate(() -> System.out.println("Running after every 5 sec"), 3, 5, TimeUnit.SECONDS); // Periodic
+        Future<?> future1 = scheduledExecutorService.scheduleAtFixedRate(() -> System.out.println("Running after every 5 sec"), 3, 5, TimeUnit.SECONDS); // Periodic and Will not wait for task completion it will just run at every interval mentioned
         Future<?> future2 = scheduledExecutorService.scheduleWithFixedDelay(() -> System.out.println("Start after every 5 sec of completion"), 3, 5, TimeUnit.SECONDS); // Periodic With Delay
 
 

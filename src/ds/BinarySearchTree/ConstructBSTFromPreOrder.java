@@ -11,7 +11,7 @@ public class ConstructBSTFromPreOrder {
         traversal(root);
     }
 
-    private static void traversal(TreeNode root) {
+    public static void traversal(TreeNode root) {
         if (root == null) return;
         System.out.println(root.data);
         traversal(root.left);
@@ -26,7 +26,7 @@ public class ConstructBSTFromPreOrder {
         return root;
     }
 
-    private static TreeNode constructBST(List<Integer> preOrder) {
+    static TreeNode constructBST(List<Integer> preOrder) {
         return construct(preOrder, Integer.MAX_VALUE, new int[]{0});
     }
 }

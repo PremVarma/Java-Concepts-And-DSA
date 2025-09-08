@@ -1,5 +1,7 @@
 package ds.Stack;
 
+import java.util.Arrays;
+
 class StackImplArray {
     private int maxSize;
     private int[] stackArray;
@@ -47,6 +49,28 @@ class StackImplArray {
 
     public int size() {
         return top + 1;
+    }
+
+    @Override
+    public String toString() {
+        return "StackImplArray{" +
+                "maxSize=" + maxSize +
+                ", stackArray=" + Arrays.toString(stackArray) +
+                ", top=" + top +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        StackImplArray stackImplArray = new StackImplArray(5);
+        stackImplArray.push(10);
+        stackImplArray.push(11);
+        stackImplArray.push(12);
+        stackImplArray.pop();
+        stackImplArray.push(13);
+        stackImplArray.push(14);
+        stackImplArray.push(15);
+        System.out.println(stackImplArray.peek());
+        System.out.println(stackImplArray);
     }
 }
 

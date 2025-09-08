@@ -33,6 +33,21 @@ public class PreviousAndNextSmallerElement {
         }
     }
 
+    private static void findNextGreaterCirculur(int[] arr) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+            if (stack.isEmpty()) {
+                System.out.println(-1);
+            } else {
+                System.out.println(stack.peek());
+            }
+            stack.push(arr[i]);
+        }
+    }
+
     private static void findNextSmaller(int[] arr) {
         int ans[] = new int[arr.length];
         Deque<Integer> stack = new ArrayDeque<>();
@@ -79,6 +94,4 @@ public class PreviousAndNextSmallerElement {
             stack.push(arr[i]);
         }
     }
-
-
 }

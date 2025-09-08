@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java-Concepts.iml" filepath="$PROJECT_DIR$/Java-Concepts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Upgrade.iml" filepath="$PROJECT_DIR$/Upgrade.iml" />
     </modules>
   </component>
 </project>

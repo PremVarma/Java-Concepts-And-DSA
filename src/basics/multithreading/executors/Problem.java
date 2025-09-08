@@ -20,7 +20,6 @@ public class Problem {
         int numberOfServices = 3;
         ExecutorService executorService1 = Executors.newFixedThreadPool(numberOfServices);
         CountDownLatch latch = new CountDownLatch(numberOfServices);
-
         executorService1.submit(new DependentService1(latch));
         executorService1.submit(new DependentService1(latch));
         executorService1.submit(new DependentService1(latch));
@@ -37,7 +36,11 @@ public class Problem {
         executorService2.submit(new DependentService2(cyclicBarrier));
         executorService2.shutdown();
 
-
+        ExecutorService workers = Executors.newFixedThreadPool(16, r -> {
+            Thread t = new Thread(r, "migration-worker");
+            t.setDaemon(true);
+            return t;
+        });
     }
 }
 
